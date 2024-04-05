@@ -2,7 +2,9 @@
 
 ## [English](README_EN.md)
 
-- [Backend](https://temp-email-api.dreamhunter2333.xyz/):
+[CHANGELOG](CHANGELOG)
+
+[Backend](https://temp-email-api.dreamhunter2333.xyz/)
 ![](https://uptime.aks.awsl.icu/api/badge/10/status)
 ![](https://uptime.aks.awsl.icu/api/badge/10/uptime)
 ![](https://uptime.aks.awsl.icu/api/badge/10/ping)
@@ -10,7 +12,7 @@
 ![](https://uptime.aks.awsl.icu/api/badge/10/cert-exp)
 ![](https://uptime.aks.awsl.icu/api/badge/10/response)
 
-- [Frontend](https://temp-email.dreamhunter2333.xyz/):
+[Frontend](https://temp-email.dreamhunter2333.xyz/)
 ![](https://uptime.aks.awsl.icu/api/badge/12/status)
 ![](https://uptime.aks.awsl.icu/api/badge/12/uptime)
 ![](https://uptime.aks.awsl.icu/api/badge/12/ping)
@@ -98,7 +100,8 @@ git clone https://github.com/dreamhunter2333/cloudflare_temp_email.git
 wrangler d1 create dev
 wrangler d1 execute dev --file=db/schema.sql
 # schema 更新，如果你在此日期之前初始化过数据库，可以执行此命令更新
-# wrangler d1 execute dev --file=db/2024-01-13-path.sql
+# wrangler d1 execute dev --file=db/2024-01-13-patch.sql
+# wrangler d1 execute dev --file=db/2024-04-03-patch.sql
 ```
 
 创建完成后，我们在 cloudflare 的控制台可以看到 D1 数据库
@@ -134,6 +137,8 @@ PREFIX = "tmp" # 要处理的邮箱名称前缀
 DOMAINS = ["xxx.xxx1" , "xxx.xxx2"] # 你的域名
 JWT_SECRET = "xxx" # 用于生成 jwt 的密钥
 BLACK_LIST = "" # 黑名单，用于过滤发件人，逗号分隔
+# 免费版附件过大会造成 Exceeded CPU Limit 错误，如果不需要附件功能，可以关闭
+ENABLE_ATTACHMENT = true
 
 [[d1_databases]]
 binding = "DB"
